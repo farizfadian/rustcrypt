@@ -1,0 +1,110 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RustCrypt - CI Workflow
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Runs on every push and pull request:
+# 1. lint  - rustfmt, clippy (-D warnings), rustdoc (-D warnings), publish dry-run
+# 2. test  - cargo test on Linux / Windows / macOS x stable / 1.75 (MSRV)
+# 3. audit - cargo-audit against the RustSec advisory database
+#
+# Cargo.lock is committed and every command uses --locked so the MSRV job
+# resolves exactly the versions that are known to build on Rust 1.75.
+#
+# An idea from Fariz and made with love by Claude AI
+# ═══════════════════════════════════════════════════════════════════════════════
+
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  lint:
+    name: Lint (fmt, clippy, doc, package)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: rustfmt
+        run: cargo fmt --all --check
+
+      - name: clippy (all features)
+        run: cargo clippy --all-targets --all-features --locked -- -D warnings
+
+      - name: clippy (no default features)
+        run: cargo clippy --all-targets --no-default-features --locked -- -D warnings
+
+      - name: rustdoc
+        run: cargo doc --no-deps --all-features --locked
+        env:
+          RUSTDOCFLAGS: -D warnings
+
+      - name: cargo publish --dry-run
+        run: cargo publish --dry-run --locked
+
+  test:
+    name: Test (Rust ${{ matrix.rust }} / ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        rust: [stable, '1.75.0']
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust ${{ matrix.rust }}
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.rust }}
+
+      - name: Show versions
+        run: |
+          rustc --version
+          cargo --version
+
+      - name: Test (all features)
+        run: cargo test --all-features --locked
+
+      - name: Test (no default features)
+        run: cargo test --no-default-features --locked
+
+      - name: Build (no default features)
+        run: cargo build --no-default-features --locked
+
+      - name: Build examples
+        run: cargo build --examples --all-features --locked
+
+  audit:
+    name: Security audit (cargo-audit)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: cargo audit
+        uses: rustsec/audit-check@v2.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

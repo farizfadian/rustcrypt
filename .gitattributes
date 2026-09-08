@@ -1,0 +1,6 @@
+# Normalise line endings: LF in the repository and in working copies, so
+# rustfmt/CI on Linux, macOS and Windows agree.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.gif binary

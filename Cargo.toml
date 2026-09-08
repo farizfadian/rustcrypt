@@ -1,0 +1,61 @@
+[package]
+name = "rustcrypt-jasypt"
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["Fariz Fadian"]
+description = "Jasypt-compatible ENC(...) encryption for Rust configs: AES-256-GCM, PBEWithMD5AndDES and PBEWithHmacSHA256AndAES_256, cross-compatible with GoCrypt, PyCrypt, NodeCrypt and PHPCrypt"
+license = "MIT"
+repository = "https://github.com/farizfadian/rustcrypt"
+homepage = "https://github.com/farizfadian/rustcrypt"
+documentation = "https://docs.rs/rustcrypt-jasypt"
+readme = "README.md"
+keywords = ["jasypt", "encryption", "config", "aes-gcm", "secrets"]
+categories = ["cryptography", "config", "command-line-utilities"]
+exclude = [".github/", "docs/", "scripts/", "CLAUDE.md", "CLAUDE-CODE-BRIEFING.md"]
+
+[lib]
+name = "rustcrypt_jasypt"
+path = "src/lib.rs"
+
+[[bin]]
+name = "rustcrypt"
+path = "src/bin/rustcrypt.rs"
+required-features = ["cli"]
+
+[[example]]
+name = "config_loader"
+required-features = ["config"]
+
+[features]
+default = ["config", "cli"]
+config = ["dep:serde", "dep:serde_json"]
+cli = ["dep:clap", "config"]
+
+[dependencies]
+aes = "0.8"
+aes-gcm = "0.10"
+cbc = { version = "0.1", features = ["alloc", "block-padding"] }
+cipher = { version = "0.4", features = ["alloc", "block-padding"] }
+des = "0.8"
+md-5 = "0.10"
+sha2 = "0.10"
+pbkdf2 = { version = "0.12", default-features = false, features = ["hmac"] }
+rand_core = { version = "0.6", features = ["getrandom"] }
+base64 = "0.23"
+regex = "1"
+thiserror = "2"
+serde = { version = "1", features = ["derive"], optional = true }
+serde_json = { version = "1", optional = true }
+clap = { version = "4.5", features = ["derive"], optional = true }
+
+[dev-dependencies]
+tempfile = "3"
+assert_cmd = "2.0"
+predicates = "3"
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[package.metadata.docs.rs]
+all-features = true

@@ -1,0 +1,185 @@
+{
+  "generator": "scripts/gen-vectors/main.go",
+  "gocrypt_module": "github.com/farizfadian/gocrypt v1.0.0",
+  "gocrypt_commit": "2599b0abf3cdf2f677ead58dfb3ca9964277b6ba",
+  "generated_at": "2026-09-07",
+  "password": "rustcrypt-test-2026",
+  "vectors": [
+    {
+      "mode": "default",
+      "plaintext": "hello",
+      "encrypted": "ENC(kU/jNgiOOc9euKgZ2vAjYlpKoahu4KXaaoJ8XL75fs2AwbzwVRF4d2ey0pqQdVNT5Q==)"
+    },
+    {
+      "mode": "jasypt",
+      "plaintext": "hello",
+      "encrypted": "ENC(sIAlbZnxY3KGqbnsHk+t2w==)"
+    },
+    {
+      "mode": "jasypt-strong",
+      "plaintext": "hello",
+      "encrypted": "ENC(QArHeP3mm2vsGWzaAA2IQkVMJes9VisWlvCduWDzW2I=)"
+    },
+    {
+      "mode": "default",
+      "plaintext": "Password123!",
+      "encrypted": "ENC(USVMu7W75yYW2qdlQ7EW7ZD1Zdqs1FekaJ76froL3O/qT+qwTp9hBgV6OnqHbIWs6GlG07Sn7y4=)"
+    },
+    {
+      "mode": "jasypt",
+      "plaintext": "Password123!",
+      "encrypted": "ENC(Qd/khCkpWei5C9pPLf25etcpzcgJVQ44)"
+    },
+    {
+      "mode": "jasypt-strong",
+      "plaintext": "Password123!",
+      "encrypted": "ENC(0Zn+lGcn4buchdHNMT+jAL2gFjl9Wf9tUMrxGLkN+2Q=)"
+    },
+    {
+      "mode": "default",
+      "plaintext": "01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+      "encrypted": "ENC(O8BSZmxvPDR3ToSBkqaxCUcdL+mFfxTtSW2g5vug1FK+KHWm8Zf57ySNE7HAHyc7X7yn6adbnBWN+eWHWQgFA1bvvPbUMswKsTfZZ4QFzVgXGAR4R8eyLA1mFBx218eEgIIJE+8fMzY/dMa8y5+4PW0JwDfKLT/lYcrhCeapOJIlYqoyNyxRtt7j+TXDIgnptQTiOuVXrQepLWOkFnoFQEiDMcvyGQzwytop3DvZmXI5qslqYaOOBrxos4FYoRtINw2MWLVbBNu1C8VOhH4syiS0WuFlu9tPX8NwnVZ3Wx5WXCfbODWNKwq47e5sJG/TiLVs+g==)"
+    },
+    {
+      "mode": "jasypt",
+      "plaintext": "01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+      "encrypted": "ENC(lyPO2EdP7dDhXN7B2RgvYGLtyuVKUbMEyefpR4GEvG/1TGbLgEpd3SKh/HZVcJHNtpdYiQFlASoSLZT3StQR+AWbeQM5AZbDCwL4Fe7EYAgQ3t9xFaglPe/Hcp0PcgAsjdogOBhmJXOJrEgr4kG8wA5VUr0a9FRMgxYESyDAlrZPYXlLZIfLQYePNsZRuV75mi0nDFrtg9q+HInHhwHcvhvQNK8E2G8PHbKb2AfuxA0pVr4MA8oUJyGv4lfBJf9prQi9piPW4f61GYJ0EJirDJMEjUl1D0WD)"
+    },
+    {
+      "mode": "jasypt-strong",
+      "plaintext": "01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+      "encrypted": "ENC(wWu298ZdHVs7F5fVt0CrLlGfOvkZox4JWiaKFfudOm4rUfCmImNtfJVsSj4Fq6NjrzfU6jiCFrKC5SV1x056V0yMN7IO1+sMTI1Ihq/gqhbv3ccC0+xw9Ew607mDS6HhXn78KjgAgD8wy61eRMM70iEl9N+kAY9C2shJ6sdNj/6vUcfsdSpXFMyl92ctprJ9EjKvLzznWZ+95vJqkErBUvVzs8yZDB7AyXvshncg74ALNi6/s2UWwbtylZqR9DVNVdhdzCkS3I0wsiY2SUTxGbStqAbEiDs59I0hoFX0Zi8=)"
+    },
+    {
+      "mode": "default",
+      "plaintext": "Selamat pagi, Fariz 🦀",
+      "encrypted": "ENC(jNozHiCOJXeffgcqMd30IPii41YZzmNYG8Trv0EdqDN4IxD6EOquGrz1GCh80MVdLigyrcDnk5XaMk+0CE47tjFDW1Y=)"
+    },
+    {
+      "mode": "jasypt",
+      "plaintext": "Selamat pagi, Fariz 🦀",
+      "encrypted": "ENC(SiRtxg7j93gtwN77qChruRYmJB1Wu53n5VCTjiSV0mk3ixRxaXSxtA==)"
+    },
+    {
+      "mode": "jasypt-strong",
+      "plaintext": "Selamat pagi, Fariz 🦀",
+      "encrypted": "ENC(wI4u/Afrz+9KPIMXMDNZGa2JymO6H0gOgx8xkK4sP2n9Ryn/mAMieKZs4bTXfljV)"
+    }
+  ],
+  "fixed": {
+    "pbkdf2_sha256": [
+      {
+        "salt_hex": "000102030405060708090a0b0c0d0e0f",
+        "iterations": 10000,
+        "len": 32,
+        "out_hex": "a30faa9d7a312a6a083b6703a7f0de550f12cba73baf12ea260b63fa8db1bed4"
+      },
+      {
+        "salt_hex": "000102030405060708090a0b0c0d0e0f",
+        "iterations": 1000,
+        "len": 48,
+        "out_hex": "f43dd5f7362cc0478e6fdd0a508893e036db040e4602b03a9a8342cc28fa5532f204dfc76d10e74b03457c05450fe47a"
+      },
+      {
+        "salt_hex": "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        "iterations": 5000,
+        "len": 48,
+        "out_hex": "f7848381db90145a628efbca589f926948d480e5e7c28bb7ed6c800ae5c850384158ccf33fca1e9ae5e865c22bab29cc"
+      },
+      {
+        "salt_hex": "0102030405060708",
+        "iterations": 1,
+        "len": 16,
+        "out_hex": "daf32a4da08d0f77ef02e7fb96adfad4"
+      }
+    ],
+    "pbkdf1_md5": [
+      {
+        "salt_hex": "0102030405060708",
+        "iterations": 1,
+        "out_hex": "d7697ba7f0596c8a9b7753045ab0e54f"
+      },
+      {
+        "salt_hex": "0102030405060708",
+        "iterations": 2,
+        "out_hex": "2dfec47b8b54453a4bc651dcb9e979ec"
+      },
+      {
+        "salt_hex": "0102030405060708",
+        "iterations": 1000,
+        "out_hex": "6cb42717159ad5a1f6aebb57cbdb8cbe"
+      },
+      {
+        "salt_hex": "0102030405060708",
+        "iterations": 2000,
+        "out_hex": "acdc5b529b062f7e867de2d082b46037"
+      }
+    ],
+    "aes_gcm": [
+      {
+        "salt_hex": "000102030405060708090a0b0c0d0e0f",
+        "nonce_hex": "a1a2a3a4a5a6a7a8a9aaabac",
+        "iterations": 10000,
+        "key_size": 32,
+        "plaintext": "hello",
+        "encoded": "AAECAwQFBgcICQoLDA0OD6Gio6SlpqeoqaqrrJ3o7pMIu2wqz7VwwkKG/A7F2Zq+pQ=="
+      },
+      {
+        "salt_hex": "000102030405060708090a0b0c0d0e0f",
+        "nonce_hex": "a1a2a3a4a5a6a7a8a9aaabac",
+        "iterations": 10000,
+        "key_size": 32,
+        "plaintext": "Selamat pagi, Fariz 🦀",
+        "encoded": "AAECAwQFBgcICQoLDA0OD6Gio6SlpqeoqaqrrKbo7p4KQc+LlxMar3c2u+xO71zTs29C5ED2LDe15EKg1nN7i4cF4lw="
+      },
+      {
+        "salt_hex": "0102030405060708",
+        "nonce_hex": "a1a2a3a4a5a6a7a8a9aaabac",
+        "iterations": 1000,
+        "key_size": 16,
+        "plaintext": "hello",
+        "encoded": "AQIDBAUGBwihoqOkpaanqKmqq6waSwk/UnLjC6822s2kiO+ERH1KfX4="
+      }
+    ],
+    "jasypt_des": [
+      {
+        "salt_hex": "0102030405060708",
+        "iterations": 1000,
+        "plaintext": "hello",
+        "encoded": "AQIDBAUGBwi43NUBKBtLLg=="
+      },
+      {
+        "salt_hex": "0102030405060708",
+        "iterations": 1000,
+        "plaintext": "Selamat pagi, Fariz 🦀",
+        "encoded": "AQIDBAUGBwg4mzvhlef6goVuiAynNOLtDWMDochmo4lMzcw4OeRJBA=="
+      },
+      {
+        "salt_hex": "0102030405060708",
+        "iterations": 2000,
+        "plaintext": "12345678",
+        "encoded": "AQIDBAUGBwiuMrL1TU65zuwaLzAN5HrX"
+      }
+    ],
+    "jasypt_strong": [
+      {
+        "salt_hex": "000102030405060708090a0b0c0d0e0f",
+        "iterations": 1000,
+        "plaintext": "hello",
+        "encoded": "AAECAwQFBgcICQoLDA0OD4a/Hv+hxzgf/OTA3OjRb8w="
+      },
+      {
+        "salt_hex": "000102030405060708090a0b0c0d0e0f",
+        "iterations": 1000,
+        "plaintext": "Selamat pagi, Fariz 🦀",
+        "encoded": "AAECAwQFBgcICQoLDA0ODz3iQHTQTaEMat2oVwFcnJAVOt7bTnZHwptNkQaG2W51"
+      },
+      {
+        "salt_hex": "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        "iterations": 5000,
+        "plaintext": "0123456789abcdef",
+        "encoded": "ICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj+FrMMvs8AMWFJlncF3hYUD1h1rqQenrvuI+DNQcJNxNA=="
+      }
+    ]
+  }
+}
