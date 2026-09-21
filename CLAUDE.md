@@ -273,7 +273,7 @@ Cross-language: ✅ RustCrypt decrypts every GoCrypt v1.0.0 vector; ✅ gocrypt-
 
 | Item | Status |
 |------|--------|
-| Published | ⏳ PENDING — v1.0.0 is published by the Release workflow when tag `v1.0.0` is pushed (planned 2026-09-09) |
+| Published | ⏳ PENDING — v1.0.0 is published by the Release workflow when tag `v1.0.0` is pushed (planned 2026-09-22) |
 | Install | `cargo add rustcrypt-jasypt` / `cargo install rustcrypt-jasypt` |
 | CI | ✅ GitHub Actions (ubuntu/windows/macos × stable/1.75, clippy, doc, audit, publish dry-run) |
 | Release | ✅ Workflow ready: on `git tag v*` + push → GitHub Release with 5 binaries → `cargo publish` |
@@ -281,7 +281,7 @@ Cross-language: ✅ RustCrypt decrypts every GoCrypt v1.0.0 vector; ✅ gocrypt-
 | Cross-language tested | ✅ Encrypt in Rust → Decrypt in Go (gocrypt-cli) and vice versa; Python/Node/PHP via shared GoCrypt format |
 
 ### Publish log
-- 2026-09-09 (planned): push tag v1.0.0 -> Release workflow (checks, GitHub Release with 5 binaries + sha256, cargo publish).
+- 2026-09-22 (planned): push tag v1.0.0 -> Release workflow (checks, GitHub Release with 5 binaries + sha256, cargo publish).
 
 ### How to release a new version
 ```bash
