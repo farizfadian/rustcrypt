@@ -19,7 +19,7 @@ Language    : Rust 2021, MSRV 1.75
 License     : MIT
 Dependencies: pure Rust (RustCrypto: aes, aes-gcm, cbc, des, md-5, sha2, pbkdf2) - NO OpenSSL
 Created     : September 2026
-Status      : ⏳ v1.0.0 pending publish (see Publish & Release Status)
+Status      : ✅ PUBLISHED & TESTED (v1.0.0, 2026-09-22)
 Install     : cargo add rustcrypt-jasypt   |   cargo install rustcrypt-jasypt (CLI)
 Registry    : crates.io (token: CARGO_REGISTRY_TOKEN GitHub secret)
 Release     : Auto-publish via GitHub Actions on tag push (v*)
@@ -273,7 +273,7 @@ Cross-language: ✅ RustCrypt decrypts every GoCrypt v1.0.0 vector; ✅ gocrypt-
 
 | Item | Status |
 |------|--------|
-| Published | ⏳ PENDING — v1.0.0 is published by the Release workflow when tag `v1.0.0` is pushed (planned 2026-09-22) |
+| Published | ✅ v1.0.0 on crates.io (2026-09-22) + GitHub Release with 5 binaries |
 | Install | `cargo add rustcrypt-jasypt` / `cargo install rustcrypt-jasypt` |
 | CI | ✅ GitHub Actions (ubuntu/windows/macos × stable/1.75, clippy, doc, audit, publish dry-run) |
 | Release | ✅ Workflow ready: on `git tag v*` + push → GitHub Release with 5 binaries → `cargo publish` |
@@ -281,7 +281,7 @@ Cross-language: ✅ RustCrypt decrypts every GoCrypt v1.0.0 vector; ✅ gocrypt-
 | Cross-language tested | ✅ Encrypt in Rust → Decrypt in Go (gocrypt-cli) and vice versa; Python/Node/PHP via shared GoCrypt format |
 
 ### Publish log
-- 2026-09-22 (planned): push tag v1.0.0 -> Release workflow (checks, GitHub Release with 5 binaries + sha256, cargo publish).
+- 2026-09-22: tag v1.0.0 pushed -> Release workflow run 35660085477 green (checks, GitHub Release with 5 binaries + sha256, cargo publish). crates.io: https://crates.io/crates/rustcrypt-jasypt/1.0.0 | docs: https://docs.rs/rustcrypt-jasypt/1.0.0
 
 ### How to release a new version
 ```bash
