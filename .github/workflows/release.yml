@@ -12,7 +12,9 @@
 # 2. Create a GitHub Release with the matching CHANGELOG.md section as body
 # 3. Build the `rustcrypt` CLI for 5 targets and attach the archives
 #    (rustcrypt-<version>-<target>.tar.gz / .zip) plus SHA-256 checksums
-# 4. Publish the crate to crates.io using the CARGO_REGISTRY_TOKEN secret
+# 4. Attach the same binaries unpacked (rustcrypt-windows-amd64.exe,
+#    rustcrypt-linux-amd64, ...) plus checksums.txt, see raw-binaries.yml
+# 5. Publish the crate to crates.io using the CARGO_REGISTRY_TOKEN secret
 #
 # Required repository secret: CARGO_REGISTRY_TOKEN (crates.io API token with
 # publish-new / publish-update scope for rustcrypt-jasypt).
@@ -135,9 +137,16 @@ jobs:
           include: LICENSE,README.md,CHANGELOG.md
           token: ${{ secrets.GITHUB_TOKEN }}
 
+  raw-binaries:
+    name: Raw binaries
+    needs: upload-assets
+    uses: ./.github/workflows/raw-binaries.yml
+    with:
+      tag: ${{ github.ref_name }}
+
   publish:
     name: Publish to crates.io
-    needs: upload-assets
+    needs: [upload-assets, raw-binaries]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

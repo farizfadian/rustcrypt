@@ -91,8 +91,10 @@ rustcrypt/
 ├── examples/                  # basic.rs, jasypt_compat.rs, config_loader.rs
 ├── scripts/
 │   ├── gen-vectors/           # Go: regenerates the fixture from the real gocrypt module
-│   └── cross-check.ps1        # round trips vs gocrypt-cli / pycrypt / nodecrypt on PATH
-├── .github/workflows/         # ci.yml (3 OS x stable/1.75 + audit), release.yml (5 targets + publish)
+│   ├── cross-check.ps1        # round trips vs gocrypt-cli / pycrypt / nodecrypt on PATH
+│   └── raw-release-assets.sh  # release archives -> GoCrypt-style raw binaries + checksums.txt
+├── .github/workflows/         # ci.yml (3 OS x stable/1.75 + audit), release.yml (5 targets + publish),
+│                              #   raw-binaries.yml (unpacked binaries; called by release.yml or by hand)
 ├── README.md, CHANGELOG.md, CONTRIBUTING.md, SECURITY.md, LICENSE
 └── CLAUDE.md                  # this file
 ```
@@ -276,7 +278,7 @@ Cross-language: ✅ RustCrypt decrypts every GoCrypt v1.0.0 vector; ✅ gocrypt-
 | Published | ✅ v1.0.0 on crates.io (2026-09-22) + GitHub Release with 5 binaries |
 | Install | `cargo add rustcrypt-jasypt` / `cargo install rustcrypt-jasypt` |
 | CI | ✅ GitHub Actions (ubuntu/windows/macos × stable/1.75, clippy, doc, audit, publish dry-run) |
-| Release | ✅ Workflow ready: on `git tag v*` + push → GitHub Release with 5 binaries → `cargo publish` |
+| Release | ✅ Workflow ready: on `git tag v*` + push → GitHub Release with 5 archives + 5 raw binaries (`rustcrypt-windows-amd64.exe`, ...) + `checksums.txt` → `cargo publish` |
 | Token | `CARGO_REGISTRY_TOKEN` (crates.io API token) as GitHub Actions secret in farizfadian/rustcrypt |
 | Cross-language tested | ✅ Encrypt in Rust → Decrypt in Go (gocrypt-cli) and vice versa; Python/Node/PHP via shared GoCrypt format |
 

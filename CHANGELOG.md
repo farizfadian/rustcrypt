@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- GitHub Releases now also carry the CLI as directly downloadable binaries (`rustcrypt-windows-amd64.exe`, `rustcrypt-linux-amd64`, `rustcrypt-linux-arm64`, `rustcrypt-darwin-amd64`, `rustcrypt-darwin-arm64`) with a `checksums.txt`, next to the existing archives. Added to the 1.0.0 release as well; the crate itself is unchanged.
+
 ### Planned
 - Optional `zeroize` support for passwords and derived keys
 - MSRV bump to 1.85 to move to the current RustCrypto release line

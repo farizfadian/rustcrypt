@@ -1,0 +1,57 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RustCrypt - Raw Binaries
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Adds directly downloadable binaries to a GitHub Release, like GoCrypt does:
+#
+#   rustcrypt-windows-amd64.exe   rustcrypt-linux-amd64   rustcrypt-darwin-amd64
+#                                 rustcrypt-linux-arm64   rustcrypt-darwin-arm64
+#   checksums.txt
+#
+# The binaries are extracted from the archives the Release workflow already
+# uploaded (see scripts/raw-release-assets.sh); nothing is rebuilt.
+#
+# Runs automatically as part of the Release workflow, and can be started by
+# hand to (re)fill an existing release:
+#
+#   gh workflow run raw-binaries.yml -f tag=v1.0.0
+#
+# An idea from Fariz and made with love by Claude AI
+# ═══════════════════════════════════════════════════════════════════════════════
+
+name: Raw binaries
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: Release tag to add raw binaries to
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to add raw binaries to (for example v1.0.0)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  raw-binaries:
+    name: Upload raw binaries and checksums.txt
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract binaries from the release archives
+        run: bash scripts/raw-release-assets.sh "$TAG" dist
+
+      - name: Upload to the release
+        run: gh release upload "$TAG" dist/* --clobber

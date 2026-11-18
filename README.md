@@ -281,8 +281,19 @@ let boxed: Box<dyn StringEncryptor> = Box::new(JasyptEncryptor::new(&password)?)
 
 ```bash
 cargo install rustcrypt-jasypt      # installs the `rustcrypt` binary
-# or download a release archive from GitHub Releases
 ```
+
+Or download a ready-to-run binary from [GitHub Releases](https://github.com/farizfadian/rustcrypt/releases/latest), no Rust toolchain needed:
+
+| Platform | File |
+|----------|------|
+| Windows (64-bit) | `rustcrypt-windows-amd64.exe` |
+| Linux (x86_64) | `rustcrypt-linux-amd64` |
+| Linux (ARM64) | `rustcrypt-linux-arm64` |
+| macOS (Intel) | `rustcrypt-darwin-amd64` |
+| macOS (Apple Silicon) | `rustcrypt-darwin-arm64` |
+
+`checksums.txt` holds their SHA-256 sums. The same binaries are also published as `rustcrypt-<version>-<target>.zip` / `.tar.gz` archives together with the README and license.
 
 ```bash
 # Encrypt a value
