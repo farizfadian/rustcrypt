@@ -100,16 +100,16 @@ jobs:
   audit:
     name: Security audit (cargo-audit)
     runs-on: ubuntu-latest
-    # audit-check reports its findings as a check run; without this the job
-    # crashes as soon as there is anything to report.
-    permissions:
-      contents: read
-      checks: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: cargo audit
-        uses: rustsec/audit-check@v2.0.0
+      - name: Install cargo-audit
+        uses: taiki-e/install-action@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          tool: cargo-audit
+
+      # Fails on vulnerabilities. Informational advisories (unmaintained,
+      # unsound, yanked) are printed as warnings and do not fail the job.
+      - name: cargo audit
+        run: cargo audit
