@@ -244,6 +244,20 @@ loader.set_to_env(".env")?;
 
 Cross-language: ✅ RustCrypt decrypts every GoCrypt v1.0.0 vector; ✅ gocrypt-cli decrypts RustCrypt output (all 3 modes); fixed-salt outputs are byte-identical to GoCrypt.
 
+### What has actually been run against other implementations
+
+Only the rows below were executed. A matching layout on paper is not a test: PyCrypt 1.0.0 looked right and was not.
+
+| Counterpart | Mode | Result |
+|-------------|------|--------|
+| GoCrypt v1.0.0 | all three, both directions | ✅ golden vectors in CI, live `gocrypt-cli` round trips (2026-09) |
+| Java Jasypt 1.9.3 (JDK 25) | `--jasypt`, both directions | ✅ 2026-11-19, including non-ASCII plaintext and a non-ASCII password |
+| Java Jasypt 1.9.3 | default and `--jasypt-strong` | ❌ by design: Jasypt cannot read either (confirmed 2026-11-19) |
+| JDK only (`AES/GCM/NoPadding` + `PBKDF2WithHmacSHA256`) | default, both directions | ✅ 2026-11-19, including a non-ASCII password |
+| NodeCrypt | default, NodeCrypt → RustCrypt | ✅ 2026-11-19 (manual run by Fariz, NodeCrypt version not recorded) |
+| PyCrypt | default | ❌ with PyCrypt 1.0.0 (16-byte GCM nonce); fixed in PyCrypt 1.0.1, which its own session reports as checked against RustCrypt |
+| PHPCrypt | any | never run (PHP is not installed on this machine) |
+
 ---
 
 ## 🧰 Local environment (Fariz's Windows laptop)
@@ -280,7 +294,7 @@ Cross-language: ✅ RustCrypt decrypts every GoCrypt v1.0.0 vector; ✅ gocrypt-
 | CI | ✅ GitHub Actions (ubuntu/windows/macos × stable/1.75, clippy, doc, audit, publish dry-run) |
 | Release | ✅ Workflow ready: on `git tag v*` + push → GitHub Release with 5 archives + 5 raw binaries (`rustcrypt-windows-amd64.exe`, ...) + `checksums.txt` → `cargo publish` |
 | Token | `CARGO_REGISTRY_TOKEN` (crates.io API token) as GitHub Actions secret in farizfadian/rustcrypt |
-| Cross-language tested | ✅ Encrypt in Rust → Decrypt in Go (gocrypt-cli) and vice versa; Python/Node/PHP via shared GoCrypt format |
+| Cross-language tested | ✅ GoCrypt (all modes, both directions) and Java Jasypt 1.9.3 (`--jasypt`, both directions). Others: see the table under "Testing Status". PHPCrypt is untested |
 
 ### Publish log
 - 2026-09-22: tag v1.0.0 pushed -> Release workflow run 35660085477 green (checks, GitHub Release with 5 binaries + sha256, cargo publish). crates.io: https://crates.io/crates/rustcrypt-jasypt/1.0.0 | docs: https://docs.rs/rustcrypt-jasypt/1.0.0
